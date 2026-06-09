@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adhesiones | Manifiesto Me La Juego Por La Vida</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#95d4b3",
+                        "primary": "#012d1d",
+                        "inverse-primary": "#a5d0b9",
+                        "outline": "#717973",
+                        "on-background": "#1d1c17",
+                        "outline-variant": "#c1c8c2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#dc983d",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "tertiary": "#382100",
+                        "primary-container": "#1b4332",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002114",
+                        "surface-tint": "#3f6653",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary-fixed": "#002114",
+                        "on-primary-container": "#86af99",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "on-surface-variant": "#414844",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#2c694e",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f2ede5",
+                        "surface-bright": "#fef9f1",
+                        "on-secondary-container": "#316e52",
+                        "surface-dim": "#ded9d2",
+                        "inverse-surface": "#32302b",
+                        "inverse-on-surface": "#f5f0e8",
+                        "tertiary-fixed": "#ffddb8",
+                        "background": "#fef9f1",
+                        "secondary-container": "#aeeecb",
+                        "surface-variant": "#e7e2da",
+                        "surface": "#fef9f1",
+                        "surface-container-high": "#ece8e0",
+                        "on-surface": "#1d1c17",
+                        "secondary-fixed": "#b1f0ce",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#c1ecd4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#563400",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "surface-container-low": "#f8f3eb",
+                        "surface-container-highest": "#e7e2da",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "780px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "section-gap-mobile": "64px",
+                        "section-gap-desktop": "120px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-xl": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "600" }],
+                        "body-md": ["17px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "34px", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-xl": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(183, 121, 31, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(183, 121, 31, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(183, 121, 31, 0); }
+        }
+
+        /* ── Ticker ── */
+        .ticker-track {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+        }
+        .ticker-inner {
+            display: flex;
+            gap: 10px;
+            width: max-content;
+        }
+        @keyframes ticker-left {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes ticker-right {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .ticker-left  { animation: ticker-left  50s linear infinite; }
+        .ticker-right { animation: ticker-right 50s linear infinite; }
+        .ticker-track:hover .ticker-inner { animation-play-state: paused; }
+
+        .ticker-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px 6px 7px;
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 999px;
+            white-space: nowrap;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .ticker-avatar {
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: #2D6A4F;
+            color: white;
+            font-size: 10px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ticker-chip.ciudadano .ticker-avatar { background: #0F766E; }
+
+        /* ── Mosaic ── */
+        .mosaic-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .mosaic-chip:hover {
+            box-shadow: 0 4px 14px rgba(27,67,50,0.12);
+            transform: translateY(-1px);
+        }
+        .mosaic-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: #2D6A4F;
+            color: white;
+            font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .mosaic-chip.ciudadano .mosaic-avatar { background: #0F766E; }
+        @keyframes chipEnter {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .mosaic-chip-enter { animation: chipEnter 0.35s ease both; }
+
+        /* ── Feedback de validación ── */
+        .field-error {
+            font-size: 12px; color: #DC2626; margin-top: 5px;
+            display: flex; align-items: center; gap: 5px; font-weight: 500;
+        }
+        .input-error  { border-color: #DC2626 !important; background: #FFF5F5 !important; }
+        .input-ok     { border-color: #2D6A4F !important; }
+        .form-alert {
+            padding: 12px 14px; border-radius: 8px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px;
+            display: flex; align-items: flex-start; gap: 8px; display:none;
+        }
+        .form-alert.visible { display: flex; }
+        .form-alert-error   { background: #FEF2F2; border-left: 3px solid #DC2626; color: #991B1B; }
+        .form-alert-success { background: #F0FDF4; border-left: 3px solid #16A34A; color: #15803D; }
+        #btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        #btn-submit.loading::after {
+            content: ''; display: inline-block; width: 14px; height: 14px;
+            border: 2px solid rgba(255,255,255,0.4); border-top-color: white;
+            border-radius: 50%; animation: spin 0.7s linear infinite; margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 sticky z-50 bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 border-b border-outline-variant/10 dark:border-outline/10 flex justify-between items-center w-full px-gutter max-w-[960px] mx-auto h-16 gap-4 flat no shadows">
+<div class="font-headline-md text-[18px] md:text-[20px] font-bold text-primary dark:text-inverse-primary tracking-tight whitespace-nowrap shrink-0 border-r border-outline-variant/30 pr-6 mr-2">Manifiesto por la Vida 2026</div>
+<div class="hidden md:flex space-x-5 items-center">
+<a class="text-primary dark:text-inverse-primary font-bold border-b border-primary/60 dark:border-inverse-primary pb-1 font-label-sm text-[13px]" href="#">Manifiesto</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label-sm text-[13px]" href="#">Puntos</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label-sm text-[13px]" href="#firma">Firmar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label-sm text-[13px]" href="#">Cifras</a>
+</div>
+<a class="hidden md:inline-flex items-center justify-center gap-2 px-3 py-1.5 border border-primary text-primary rounded font-label-sm text-[12px] hover:bg-primary/10 transition-colors" href="MANIFIESTO_POR_EL_AGUA_LA_VIDA_Y_EL_FUTURO_DE_LOS_TERRITORIOS.pdf" download>
+            <span class="material-symbols-outlined text-sm">download</span>
+            Descargar
+        </a>
+<a class="hidden md:inline-flex items-center justify-center px-3 py-1.5 bg-primary text-on-primary rounded font-label-sm text-[12px] hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-200" href="#firma">
+            Firmar Ahora
+        </a>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<!-- HERO -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb1WzvKtGTmIUKExlivsa1GGBJziiKfLzmvIjM_2XqQoGd_YA_rr0b78qQGR4kTgkLeDU4lPOMqVrPZOndSK970joCFtWylm_SaqL-rdNOruL1nfyq4amuK84bEQDCFPhjGkKIp0eUeLWkIYJvCFOkPaDEQZv-w1yXFGwsg5l5BE0ZVlxJyQPwI0PDBRD-8oBnEtn3N5KUt8whGWqtlhz8NBR91EbgRezdfCECHibhaBUvBFYLZ25Pt749pozQ3cJiCjb_IoDgyrk"/>
+<div class="absolute inset-0 bg-gradient-to-b from-[rgba(27,67,50,0.3)] to-[rgba(27,67,50,0.85)]"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max px-gutter mx-auto text-center flex flex-col items-center">
+<div class="inline-flex items-center gap-2 mb-stack-lg px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
+<span class="w-2 h-2 rounded-full bg-[#B7791F] pulse-dot"></span>
+<span class="text-white font-label-sm text-label-sm uppercase tracking-widest text-xs">MANIFIESTO · ADHESIONES 2026</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-white mb-stack-md leading-tight max-w-4xl">
+                Por el agua, la vida y el futuro de nuestros territorios
+            </h1>
+<p class="font-body-lg text-body-lg text-inverse-primary max-w-2xl mb-stack-lg">Basados en la experiencia profesional y la evidencia científica, invitamos a la ciudadanía a defender nuestra institucionalidad ambiental apoyando el proyecto de Iván Cepeda y Aida Quilcué.</p>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-stack-lg">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-[#B7791F] text-white rounded font-label-sm text-label-sm uppercase tracking-wider hover:bg-opacity-90 transition-colors" href="#firma">
+                    Adherirme como Profesional Ambiental
+                </a>
+<a class="inline-flex items-center justify-center px-8 py-4 border border-white text-white rounded font-label-sm text-label-sm uppercase tracking-wider hover:bg-white/10 transition-colors" href="#firma">
+                    Adherirme como Ciudadano/a
+                </a>
+</div>
+<div class="inline-flex items-center gap-2 text-white/80 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span id="hero-counter">Sé el primero en firmar →</span>
+</div>
+</div>
+</section><section class="bg-white py-section-gap-desktop px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="border-l-4 border-[#2D6A4F] pl-6">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-stack-sm block">POR QUÉ PARTICIPAMOS</span>
+<h2 class="font-headline-md text-headline-md text-[#1B4332] mb-stack-md">
+        ¿Por qué los administradores ambientales decidimos participar en este debate?
+      </h2>
+<div class="space-y-6 text-[#2D2D2D] font-body-md text-[17px] leading-[1.75]">
+<p>
+          Como administradores ambientales hemos sido formados para comprender la complejidad de los sistemas, las comunidades, la economía, la diversidad y las decisiones públicas que orientan el desarrollo de los territorios. Nuestra formación y experiencia profesional nos permite reconocer que el ambiente no está aislado de la vida política, sino que es determinante para la estabilidad económica, la seguridad hídrica que garantiza el agua limpia para nuestros hijos, la soberanía alimentaria que garantiza la comida en nuestras mesas, la salud pública para tener un ambiente sano, la conservación de la biodiversidad, el impulso del desarrollo económico a partir del aprovechamiento racional de los bienes y servicios ambientales y las posibilidades de bienestar de las generaciones presentes y futuras.
+        </p>
+<p>
+          Consideramos que el momento que enfrenta Colombia trasciende la elección de una persona o de un partido político. Lo que está en juego es la estabilidad integral de nuestro territorio: son dos visiones distintas sobre el futuro. ¿Cuál de las dos responde a esa visión de complejidad holística?
+        </p>
+<p>
+          Nuestro propósito es aportar elementos de análisis sustentados en evidencia científica, información verificable y experiencias nacionales e internacionales que permitan a la ciudadanía comprender las implicaciones ambientales, sociales y económicas de las decisiones que se encuentran en disputa.
+        </p>
+</div>
+<div class="mt-stack-lg bg-[#FEF3C7] border-l-4 border-[#B7791F] p-5 rounded-xl">
+<p class="font-body-md font-bold text-[#382100]">
+          Los administradores ambientales firmantes manifestamos abiertamente que nuestro voto es por la propuesta del candidato Iván Cepeda.
+        </p>
+</div>
+</div>
+</div>
+</section><section class="bg-[#F5F0E8] py-section-gap-desktop px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-section-gap-mobile md:gap-gutter">
+<!-- Left Column: Text Content -->
+<div class="w-full md:w-1/2 relative">
+<!-- Decorative Number -->
+<div class="absolute -top-20 -left-8 font-headline-xl text-[80px] text-primary/20 select-none z-0">01</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md leading-tight">
+            Pone el agua, la biodiversidad y los ecosistemas estratégicos en el centro.
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">
+            Votamos por Iván Cepeda porque reconocemos que la seguridad hídrica es el pilar fundamental de la estabilidad nacional. Su propuesta prioriza la protección de los páramos y cuencas abastecedoras, alejándose de modelos extractivistas que comprometen el futuro del agua para las próximas generaciones.
+          </p>
+<!-- Stat Boxes -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-stack-sm">
+<div class="bg-white border-l-4 border-secondary p-4 rounded-xl shadow-sm">
+<div class="font-headline-sm text-primary">270 días</div>
+<div class="text-sm text-on-surface-variant">de racionamiento de agua en Bogotá (2025).</div>
+</div>
+<div class="bg-white border-l-4 border-secondary p-4 rounded-xl shadow-sm">
+<div class="font-headline-sm text-primary">22.055 ha</div>
+<div class="text-sm text-on-surface-variant">afectadas en áreas protegidas durante El Niño 2023–2024.</div>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant/70 italic">
+            Equivale a aproximadamente 30.000 canchas de fútbol. Fuente: IDEAM / Parques Nacionales.
+          </p>
+</div>
+</div>
+<!-- Right Column: Image -->
+<div class="w-full md:w-1/2 flex justify-center md:justify-end">
+<div class="relative w-full max-w-[500px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+<img alt="Cascada en la selva" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5gTEzPGUxIuPU-SLdqw4DJlb6dTkUYjx8J9qSkjusAzfjN4miHeoHTI2FmI04vS3rMaV0Wqn8czswL6J0mxeLzHQviBX0uJyr4KXPecYkeITV2TZ1nns5hcigxcMPbwAStVM6O1KcCBwpn4trB0lpR-OWI4uvy1k5Km0JqZ7ErBorR5yvtnntRBWbbXTcmIQSBa00Kp0sX8gDt8bbb3q9IKAHj1qUb3QQP5A0lQdNlsQ0lK0rmlr19aG_nAsSOQFoeWBOEZRy3k"/>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-white py-section-gap-desktop px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row-reverse items-center gap-section-gap-mobile md:gap-gutter">
+<!-- Right Column: Text Content -->
+<div class="w-full md:w-1/2 relative">
+<!-- Decorative Number -->
+<div class="absolute -top-20 -left-8 font-headline-xl text-[80px] text-primary/20 select-none z-0">02</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md leading-tight">
+            Propone un modelo económico preparado para los desafíos del siglo XXI.
+          </h2>
+<div class="space-y-6 text-[#2D2D2D] font-body-md text-[17px] leading-[1.75] mb-stack-lg">
+<p>
+              Votamos por Iván Cepeda porque creemos que el futuro económico de Colombia debe construirse sobre la diversificación productiva, la innovación, el conocimiento y la transición energética justa — y no sobre una mayor dependencia de los combustibles fósiles. La transición energética es una necesidad histórica respaldada por las transformaciones que ya están ocurriendo en el mundo.
+            </p>
+<p>
+              Según el reporte de 2025 de la Organización Meteorológica Mundial (OMM), el período 2015–2025 representó los 11 años más calurosos jamás registrados, posicionando al 2025 como el segundo o tercer año más cálido de la historia. Su efecto dominó altera ecosistemas, economía y la misma seguridad humana.
+            </p>
+</div>
+<!-- Stat Box -->
+<div class="bg-[#FEF3C7] p-5 rounded-xl border-l-4 border-[#B7791F]">
+<p class="font-body-md font-bold text-[#382100]">
+              2015–2025: los 11 años más calurosos jamás registrados. <span class="block font-normal text-sm mt-1 opacity-80">Fuente: Organización Meteorológica Mundial, 2025.</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Left Column: Image -->
+<div class="w-full md:w-1/2 flex justify-center md:justify-start">
+<div class="relative w-full max-w-[500px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+<img alt="view looking through tropical mountain trees toward a wide meandering river winding through a lush green valley" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHGT5QPJBHTeVWUP8kJYq6XeT7GFuN6PncSLzuciDexV6Hz2Fh9PyOgdYor3OGX0H8z3VqYVPuowaaJjeSGvpo73GijZKkBsiTjUFKfLAbk0osqFSmLdQD964y199xdS8ssuVQTi0azq1-ItJhY5de64ve-gYvXiybfTdcODZOHf8tH8xMYbfomUG2MOngKdKi0Y-wzuRc2qOtkhG5ucuLgK2AeTlc9SEu3Vst4o8GoUyycmkJHAQh6_U7b7aHY0Lowlc2Jye-YvE"/>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-white py-section-gap-desktop px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-section-gap-mobile md:gap-gutter">
+<!-- Left Column: Text Content -->
+<div class="w-full md:w-1/2 relative">
+<!-- Decorative Number -->
+<div class="absolute -top-20 -left-8 font-headline-xl text-[80px] text-primary/20 select-none z-0">03</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md leading-tight">
+            Fortalece la capacidad del Estado para proteger el patrimonio ambiental de la nación.
+          </h2>
+<div class="space-y-6 text-[#2D2D2D] font-body-md text-[17px] leading-[1.75] mb-stack-lg">
+<p>
+              Votamos por Iván Cepeda porque consideramos que Colombia necesita fortalecer — y no debilitar — su institucionalidad ambiental. La protección de los ecosistemas requiere autoridades ambientales sólidas, sistemas de monitoreo robustos, información confiable y capacidad efectiva de regulación y control.
+            </p>
+<p>
+              Sin la Autoridad Nacional de Licencias Ambientales (ANLA), es posible que se acelere la ejecución de proyectos a corto plazo, pero a un alto costo ambiental y social para el país. Desmantelar el Sistema Nacional Ambiental (SINA) seguramente no es la solución.
+            </p>
+<p>
+              Votamos por Iván Cepeda porque creemos que fortalecer el SINA y el Sistema Nacional de Gestión del Riesgo de Desastres (SNGRD) es la única garantía de resiliencia frente a la vulnerabilidad climática que ya azota a Colombia.
+            </p>
+</div>
+<!-- Stat Box -->
+<div class="bg-white border-l-4 border-secondary p-5 rounded-xl shadow-sm w-full">
+<div class="font-headline-md text-primary mb-1">+ 80%</div>
+<div class="text-sm text-on-surface-variant">
+              de los desastres históricos de Colombia están asociados a eventos de origen climático. <span class="block mt-1 opacity-70 italic">Fuente: DNP, Índice Municipal de Riesgo Ajustado por Capacidades, 2024.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Image -->
+<div class="w-full md:w-1/2 flex justify-center md:justify-end">
+<div class="relative w-full max-w-[500px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+<img alt="Dugout canoe with bananas on river bank" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTaRWZF_GILHvlBBu69QdVX8uvyfoWFCjWJPxbOCkFZcZ8QQC_euXTP3KlZEvN3ImyTqPvaC_afJcDUZzXYMvrpiXhunx_Rv2F2QVoF4kbQ2L0AttijEb4M3iW_TS2t94Tc2JN-CQKLI_O313epUly7Iw_OYHoEnzRxWrsvvBAZn23Q_pRcRtuydgcJ1a2MbAqrufuLcklDFniHJEpSSBbNBR0PiWOpwn86w1Xpig1eDx6wqjfBHCuaDPiA_ZYDciOhAsE0ftonE"/>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-[#F5F0E8] py-section-gap-desktop px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-section-gap-mobile md:gap-gutter">
+<!-- Left Column: Text Content -->
+<div class="w-full md:w-1/2 relative">
+<!-- Decorative Number -->
+<div class="absolute -top-20 -left-8 font-headline-xl text-[80px] text-primary/20 select-none z-0">04</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md leading-tight">
+            Defiende la ciencia y la participación ciudadana.
+          </h2>
+<div class="space-y-6 text-[#2D2D2D] font-body-md text-[17px] leading-[1.75] mb-stack-lg">
+<p>
+              Votamos por Iván Cepeda porque reconocemos el valor de la ciencia, la investigación y la evidencia para orientar las decisiones públicas. Las comunidades deben participar activamente en las decisiones que afectan sus territorios, sus ecosistemas y sus formas de vida. Una democracia ambiental sólida requiere información pública, acceso a datos científicos y mecanismos reales de consulta y deliberación ciudadana.
+            </p>
+</div>
+</div>
+</div>
+<!-- Right Column: Image -->
+<div class="w-full md:w-1/2 flex justify-center md:justify-end">
+<div class="relative w-full max-w-[500px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+<img alt="Casa de madera sobre pilotes en la costa" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyvEIsjwO25hbtYClLME_ZpsHLE3JzgvJZn2LLQWs4hvfVws4a25t7gDQ8TKzjVirCHOJEMXxE54txU8rzGlv8Jd456lhawYb0DrbsTWrLzdLK319hDkqgDvIeQuFBMXZ5fSJ1xLVg9o3ZitV6ZOeqeCIPQwBWp1vL7Vzv0sH6DuHvbHHggxlIrU8EyeQ29MAkTfjb74o997a9ly5GotR5nSGTZ9dhsPgE2dwNM1KgDrXELKe8ew5aq68Lb7dDdP1oid3cijHrM-E"/>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-[#F5F0E8] py-section-gap-desktop px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row-reverse items-center gap-section-gap-mobile md:gap-gutter">
+<!-- Right Column: Text Content -->
+<div class="w-full md:w-1/2 relative">
+<!-- Decorative Number -->
+<div class="absolute -top-20 -left-8 font-headline-xl text-[80px] text-primary/20 select-none z-0">05</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md leading-tight">
+            La naturaleza no es un obstáculo al desarrollo.
+          </h2>
+<div class="space-y-6 text-[#2D2D2D] font-body-md text-[17px] leading-[1.75] mb-stack-lg">
+<p>
+              Votamos por Iván Cepeda porque defendemos una visión de desarrollo compatible con los límites ecológicos del planeta. La protección de la naturaleza constituye una condición para la estabilidad económica, la seguridad alimentaria, la paz territorial y el bienestar de las generaciones presentes y futuras. Rechazamos la falsa dicotomía entre crecimiento económico y conservación: los ecosistemas son la base material de toda actividad productiva.
+            </p>
+</div>
+</div>
+</div>
+<!-- Left Column: Image -->
+<div class="w-full md:w-1/2 flex justify-center md:justify-start">
+<div class="relative w-full max-w-[500px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+<img alt="Pile of husked coconuts" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-kmgZUlwrKvJTIc3ZKpt0m8DE0quusmmPdC2mt3g-eg0GPAXfNxVBzciG49Ut8wRyxOCrreeCkS4JK5WyG4U8JjRzixwY8Lb-YolzKMWtzdcSkwJjVXmcQJshZIg2Go8qWMFyfRiEUGS4VSJBU7RJY4P1BwlTz5a4PQEH6k_Hp8Gn7XXk3K3xNU--zXxtyh3VHO7AQE4TzXYrIffqy3PJ1Dbi9QVPqG9aqtGQPLnTV6YRakwSrrS94okvkJG6eh2pO9qSjpT7hlA"/>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-white py-section-gap-desktop px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-section-gap-mobile md:gap-gutter">
+<!-- Left Column: Text Content -->
+<div class="w-full md:w-1/2 relative">
+<!-- Decorative Number -->
+<div class="absolute -top-20 -left-8 font-headline-xl text-[80px] text-primary/20 select-none z-0">06</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md leading-tight">
+            Consolida el liderazgo ambiental internacional de Colombia.
+          </h2>
+<div class="space-y-6 text-[#2D2D2D] font-body-md text-[17px] leading-[1.75] mb-stack-lg">
+<p>
+              Votamos por Iván Cepeda porque Colombia debe mantener y profundizar el liderazgo internacional que ha construido en materia de biodiversidad, acción climática y transición ecológica. Como país megadiverso, Colombia tiene la responsabilidad y la oportunidad de ser un referente global en la construcción de economías sostenibles. La propuesta de Iván Cepeda y Aida Quilcué ofrece las mayores garantías para consolidar esa visión ante el mundo.
+            </p>
+</div>
+</div>
+</div>
+<!-- Right Column: Image -->
+<div class="w-full md:w-1/2 flex justify-center md:justify-end">
+<div class="relative w-full max-w-[500px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+<img alt="panoramic view of a winding river in a vast Colombian valley" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxyxF1mDpCtK9LEHR62TvBMH2yXPKApIe1b72fP2txMY5I_T4geXkd77LjBry_KUV0tJVVBn-jyxIkO77v1ayDhJHxqz2HIdshQY8s3HUi8sBqqxP8IoBNLvZg1IRRTFWgVpghbrQdlfwIkxa5EPY7q04_iZpnGkF2n02bQdDCjgnH0oPYRiHs0A3hluuDRP26_72S3YUhBk133LexA7uS1uFNnzP2-wzARztDQsBcWgp6Pm68wsbMfLEFk0EXQmQeqt-8D6K5UAw"/>
+</div>
+</div>
+</div>
+</div>
+</section><section class="relative w-full h-[500px] overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 z-0">
+<img alt="Biodiversidad" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMiyl0X5q9yKhTwD4Yb0kPLYEOLvavvbZdy1dWzNzvaW_s-kV3cgvcJCgUn3WlLRqzqHjp6qFrFeZ5EoZegFvRL8YSlhYkRQ8LqrL0Q-Oty1a14dtOqPJBf8PSpqieEO8V1CWuGoziCc8Xky-txLzJSIn5a-02mvpApqbA1pqoNKsn-xsVZkiZnnGJpDIKoIvZXIvPRvW2ozIxdk5Is6RwC__T48XxS5-J1CVGo4HMnlT1Pc9gWzo2HOSQgxRcv5SJykzUK05GjcU"/>
+<div class="absolute inset-0 bg-black/55"></div>
+</div>
+<div class="relative z-10 max-w-container-max px-gutter mx-auto text-center flex flex-col items-center">
+<span class="text-white font-label-sm text-[13px] uppercase tracking-widest mb-4">POR QUÉ IMPORTA</span>
+<blockquote class="font-headline-md text-headline-md text-white max-w-[680px] leading-[1.4] italic">
+      “La protección de la naturaleza es una condición para la estabilidad económica, la seguridad alimentaria y la paz territorial.”
+    </blockquote>
+</div>
+</section><section class="bg-surface py-section-gap-desktop px-gutter">
+<div class="max-w-container-max mx-auto text-center flex flex-col items-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-stack-md">Conocé el Manifiesto Completo</h2>
+<p class="text-[18px] text-on-surface-variant max-w-[700px] mx-auto mb-stack-lg font-body-md">
+      Descargá el documento completo del manifiesto en formato PDF para conocer el detalle de nuestros 6 puntos sobre política ambiental y el futuro de los territorios.
+    </p>
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#B7791F] text-white rounded font-label-sm text-label-sm uppercase tracking-wider hover:bg-opacity-90 transition-colors" href="MANIFIESTO_POR_EL_AGUA_LA_VIDA_Y_EL_FUTURO_DE_LOS_TERRITORIOS.pdf" download>
+<span class="material-symbols-outlined">download</span>
+Descargar Manifiesto PDF
+</a>
+<p class="text-sm text-on-surface-variant mt-stack-md italic">
+      MANIFIESTO_POR_EL_AGUA_LA_VIDA_Y_EL_FUTURO_DE_LOS_TERRITORIOS.pdf
+    </p>
+</div>
+</section><section class="bg-[#1B4332] py-section-gap-desktop px-gutter text-white" id="firma">
+<div class="max-w-container-max mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg mb-4">Sumá tu voz al manifiesto</h2>
+<p class="text-[18px] opacity-90 max-w-[700px] mx-auto mt-4 font-body-md">
+      Si sos egresad@ de Administración o Ciencias Ambientales de cualquier universidad colombiana, o un ciudadan@ comprometido con el futuro de Colombia, adherí a este manifiesto.
+    </p>
+<div class="text-[#B7791F] text-[20px] font-bold mt-6 flex items-center justify-center gap-2" id="form-counter-wrapper">
+<span class="material-symbols-outlined">edit</span>
+<span id="form-counter">Sé quien inicia este movimiento</span>
+</div>
+<div class="mt-8 inline-flex bg-white/10 rounded-full p-1">
+<button class="px-6 py-2 rounded-full text-sm font-bold transition-colors bg-[#2D6A4F] text-white" id="tab-prof" onclick="toggleForm('prof')">Soy egresad@ de Ciencias Ambientales</button>
+<button class="px-6 py-2 rounded-full text-sm font-bold transition-colors text-white/80 hover:text-white" id="tab-cit" onclick="toggleForm('cit')">Soy ciudadan@ adherente</button>
+</div>
+<div class="max-w-[600px] mx-auto bg-white p-8 rounded-2xl mt-8 shadow-xl text-left text-[#1D1C17]">
+
+  <!-- Alerta general del formulario -->
+  <div class="form-alert form-alert-error" id="form-alert-error" role="alert">
+    <span class="material-symbols-outlined text-[18px] shrink-0">error</span>
+    <span id="form-alert-error-msg"></span>
+  </div>
+  <div class="form-alert form-alert-success" id="form-alert-success" role="status">
+    <span class="material-symbols-outlined text-[18px] shrink-0">check_circle</span>
+    <span>¡Tu firma fue registrada! Gracias por adherirte al manifiesto.</span>
+  </div>
+
+  <!-- FORM PROFESIONAL -->
+  <form autocomplete="on" id="form-prof" novalidate>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-bold mb-1" for="prof-nombre">Nombre completo *</label>
+        <input autocomplete="name" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="prof-nombre" maxlength="80" placeholder="Tu nombre completo" type="text"/>
+        <div class="field-error hidden" id="err-prof-nombre"></div>
+      </div>
+      <div>
+        <label class="block text-sm font-bold mb-1" for="prof-universidad">Universidad *</label>
+        <input autocomplete="organization" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="prof-universidad" maxlength="120" placeholder="Nombre de la institución" type="text"/>
+        <div class="field-error hidden" id="err-prof-universidad"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-bold mb-1" for="prof-anio">Año de graduación *</label>
+          <input autocomplete="off" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="prof-anio" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="AAAA" type="text"/>
+          <div class="field-error hidden" id="err-prof-anio"></div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-1" for="prof-ciudad">Ciudad *</label>
+          <input autocomplete="address-level2" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="prof-ciudad" maxlength="60" placeholder="Tu ciudad" type="text"/>
+          <div class="field-error hidden" id="err-prof-ciudad"></div>
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-bold mb-1" for="prof-email">Correo electrónico *</label>
+        <input autocomplete="email" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="prof-email" maxlength="120" placeholder="email@ejemplo.com" type="email"/>
+        <div class="field-error hidden" id="err-prof-email"></div>
+        <p class="text-xs text-on-surface-variant/70 mt-1">Tu correo no será publicado ni compartido.</p>
+      </div>
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input class="mt-1 rounded-[2px] text-primary focus:ring-primary" id="prof-consent" type="checkbox"/>
+        <span class="text-sm">Acepto que mi nombre y ciudad aparezcan públicamente en la lista de firmantes</span>
+      </label>
+      <div class="field-error hidden" id="err-prof-consent"></div>
+    </div>
+  </form>
+
+  <!-- FORM CIUDADANO -->
+  <form autocomplete="on" class="hidden" id="form-cit" novalidate>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-bold mb-1" for="cit-nombre">Nombre completo *</label>
+        <input autocomplete="name" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="cit-nombre" maxlength="80" placeholder="Tu nombre completo" type="text"/>
+        <div class="field-error hidden" id="err-cit-nombre"></div>
+      </div>
+      <div>
+        <label class="block text-sm font-bold mb-1" for="cit-org">Organización / Afiliación</label>
+        <input autocomplete="organization" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="cit-org" maxlength="120" placeholder="Opcional" type="text"/>
+      </div>
+      <div>
+        <label class="block text-sm font-bold mb-1" for="cit-ciudad">Ciudad *</label>
+        <input autocomplete="address-level2" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="cit-ciudad" maxlength="60" placeholder="Tu ciudad" type="text"/>
+        <div class="field-error hidden" id="err-cit-ciudad"></div>
+      </div>
+      <div>
+        <label class="block text-sm font-bold mb-1" for="cit-email">Correo electrónico *</label>
+        <input autocomplete="email" class="w-full border border-outline-variant rounded-[6px] p-3 focus:ring-2 focus:ring-primary" id="cit-email" maxlength="120" placeholder="email@ejemplo.com" type="email"/>
+        <div class="field-error hidden" id="err-cit-email"></div>
+        <p class="text-xs text-on-surface-variant/70 mt-1">Tu correo no será publicado ni compartido.</p>
+      </div>
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input class="mt-1 rounded-[2px] text-primary focus:ring-primary" id="cit-consent" type="checkbox"/>
+        <span class="text-sm">Acepto que mi nombre y ciudad aparezcan públicamente en la lista de firmantes</span>
+      </label>
+      <div class="field-error hidden" id="err-cit-consent"></div>
+    </div>
+  </form>
+
+  <!-- Honeypot anti-bot (invisible para humanos) -->
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;">
+    <label>No completar este campo
+      <input autocomplete="off" id="hp_field" name="website" tabindex="-1" type="text"/>
+    </label>
+  </div>
+
+  <button class="w-full bg-[#B7791F] text-white font-bold py-4 rounded-lg text-lg mt-6 hover:bg-opacity-90 transition-colors" id="btn-submit" type="button">
+    Firmar el manifiesto →
+  </button>
+  <p class="text-center text-xs text-on-surface-variant/70 mt-4">
+    Tu firma aparecerá en la lista pública a continuación.
+  </p>
+</div>
+</div>
+<script>
+  // ════════════════════════════════════════════════════════════
+  //  MÓDULO DE SEGURIDAD DEL FORMULARIO
+  // ════════════════════════════════════════════════════════════
+
+  const Security = {
+
+    // 1. Sanitización: elimina tags HTML, caracteres peligrosos y URIs JS
+    sanitize(str, maxLen = 200) {
+      if (typeof str !== 'string') return '';
+      return str
+        .replace(/<[^>]*>/g, '')           // elimina tags HTML
+        .replace(/[<>"'`]/g, '')           // elimina chars peligrosos
+        .replace(/javascript\s*:/gi, '')   // elimina JS URIs
+        .replace(/on\w+\s*=/gi, '')        // elimina event handlers inline
+        .replace(/\\/g, '')                // elimina backslashes
+        .trim()
+        .slice(0, maxLen);
+    },
+
+    // 2. Validación de email (RFC 5322 simplificado)
+    isValidEmail(email) {
+      return /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email.trim());
+    },
+
+    // 3. Validación de nombre (letras, tildes, espacios, guiones, apóstrofes)
+    isValidName(name) {
+      return /^[a-záéíóúüñÁÉÍÓÚÜÑA-Z\s'\-\.]{3,80}$/i.test(name.trim());
+    },
+
+    // 4. Validación de año (rango razonable)
+    isValidYear(year) {
+      const y = parseInt(year, 10);
+      const now = new Date().getFullYear();
+      return !isNaN(y) && y >= 1970 && y <= now;
+    },
+
+    // 5. Rate limiting: una sola firma por sesión de navegador
+    hasAlreadySubmitted() {
+      return sessionStorage.getItem('firma_enviada') === '1';
+    },
+    markSubmitted() {
+      sessionStorage.setItem('firma_enviada', '1');
+    },
+
+    // 6. Anti-duplicado: verifica el hash del email en localStorage
+    async hashEmail(email) {
+      const msgUint8 = new TextEncoder().encode(email.trim().toLowerCase());
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2,'0')).join('');
+    },
+    async isDuplicate(email) {
+      const h = await this.hashEmail(email);
+      return localStorage.getItem('firma_hash') === h;
+    },
+    async storeEmailHash(email) {
+      const h = await this.hashEmail(email);
+      localStorage.setItem('firma_hash', h);
+    },
+
+    // 7. Timing anti-bot: el formulario debe haber estado visible ≥3 s
+    _loadTime: Date.now(),
+    isHumanTiming() {
+      return Date.now() - this._loadTime >= 3000;
+    },
+
+    // 8. Honeypot: bots llenan campos ocultos, humanos no
+    isBot() {
+      const hp = document.getElementById('hp_field');
+      return hp && hp.value.trim() !== '';
+    },
+  };
+
+  // ── Helpers de UI ──────────────────────────────────────────
+  function fieldErr(id, msg) {
+    const el = document.getElementById(id);
+    const inp = document.getElementById(id.replace('err-', ''));
+    if (el) { el.textContent = '⚠ ' + msg; el.classList.remove('hidden'); }
+    if (inp) inp.classList.add('input-error');
+  }
+  function clearFieldErr(id) {
+    const el = document.getElementById(id);
+    const inp = document.getElementById(id.replace('err-', ''));
+    if (el) { el.textContent = ''; el.classList.add('hidden'); }
+    if (inp) { inp.classList.remove('input-error'); inp.classList.add('input-ok'); }
+  }
+  function clearAllErrors() {
+    document.querySelectorAll('.field-error').forEach(e => { e.textContent=''; e.classList.add('hidden'); });
+    document.querySelectorAll('.input-error, .input-ok').forEach(e => {
+      e.classList.remove('input-error','input-ok');
+    });
+    showAlert('error', ''); showAlert('success', '');
+  }
+  function showAlert(type, msg) {
+    const el = document.getElementById('form-alert-' + type);
+    if (!el) return;
+    if (!msg) { el.classList.remove('visible'); return; }
+    if (type === 'error') document.getElementById('form-alert-error-msg').textContent = msg;
+    el.classList.add('visible');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function setSubmitLoading(on) {
+    const btn = document.getElementById('btn-submit');
+    if (!btn) return;
+    btn.disabled = on;
+    btn.classList.toggle('loading', on);
+    btn.textContent = on ? 'Enviando firma…' : 'Firmar el manifiesto →';
+  }
+
+  // ── Tabs ───────────────────────────────────────────────────
+  function toggleForm(type) {
+    const profForm = document.getElementById('form-prof');
+    const citForm  = document.getElementById('form-cit');
+    const profTab  = document.getElementById('tab-prof');
+    const citTab   = document.getElementById('tab-cit');
+    clearAllErrors();
+    if (type === 'prof') {
+      profForm.classList.remove('hidden'); citForm.classList.add('hidden');
+      profTab.classList.add('bg-[#2D6A4F]','text-white'); profTab.classList.remove('text-white/80');
+      citTab.classList.remove('bg-[#2D6A4F]','text-white'); citTab.classList.add('text-white/80');
+    } else {
+      citForm.classList.remove('hidden'); profForm.classList.add('hidden');
+      citTab.classList.add('bg-[#2D6A4F]','text-white'); citTab.classList.remove('text-white/80');
+      profTab.classList.remove('bg-[#2D6A4F]','text-white'); profTab.classList.add('text-white/80');
+    }
+  }
+
+  // ── Lógica principal de envío ──────────────────────────────
+  async function handleSubmit() {
+    clearAllErrors();
+
+    // — Detección de bot por honeypot
+    if (Security.isBot()) {
+      // Simular éxito silencioso para no revelar la detección
+      showAlert('success', ''); setSubmitLoading(false); return;
+    }
+
+    // — Timing anti-bot (envío demasiado rápido = bot)
+    if (!Security.isHumanTiming()) {
+      showAlert('error', 'Por favor, completá el formulario con calma antes de enviarlo.');
+      return;
+    }
+
+    // — Rate limiting: una firma por sesión
+    if (Security.hasAlreadySubmitted()) {
+      showAlert('error', 'Ya firmaste el manifiesto en esta sesión. ¡Gracias por tu adhesión!');
+      return;
+    }
+
+    const tipo = document.getElementById('form-prof').classList.contains('hidden') ? 'ciudadano' : 'profesional';
+    let nombre, email, ciudad, universidad = '', organizacion = '', anio = null;
+    let isValid = true;
+
+    if (tipo === 'profesional') {
+      nombre      = document.getElementById('prof-nombre').value;
+      universidad = document.getElementById('prof-universidad').value;
+      const anioVal = document.getElementById('prof-anio').value;
+      ciudad      = document.getElementById('prof-ciudad').value;
+      email       = document.getElementById('prof-email').value;
+      const consent = document.getElementById('prof-consent').checked;
+
+      if (!Security.isValidName(nombre))        { fieldErr('err-prof-nombre',      'Ingresá un nombre válido (solo letras y espacios, mín. 3 caracteres).'); isValid = false; }
+      if (!universidad.trim())                   { fieldErr('err-prof-universidad', 'Ingresá el nombre de tu universidad.'); isValid = false; }
+      if (!Security.isValidYear(anioVal))        { fieldErr('err-prof-anio',        'Ingresá un año válido entre 1970 y ' + new Date().getFullYear() + '.'); isValid = false; }
+      else anio = parseInt(anioVal, 10);
+      if (!ciudad.trim())                        { fieldErr('err-prof-ciudad',      'Ingresá tu ciudad.'); isValid = false; }
+      if (!Security.isValidEmail(email))         { fieldErr('err-prof-email',       'Ingresá un correo electrónico válido.'); isValid = false; }
+      if (!consent)                              { fieldErr('err-prof-consent',     'Debés aceptar para que tu firma aparezca públicamente.'); isValid = false; }
+
+    } else {
+      nombre       = document.getElementById('cit-nombre').value;
+      organizacion = document.getElementById('cit-org').value;
+      ciudad       = document.getElementById('cit-ciudad').value;
+      email        = document.getElementById('cit-email').value;
+      const consent = document.getElementById('cit-consent').checked;
+
+      if (!Security.isValidName(nombre))  { fieldErr('err-cit-nombre',   'Ingresá un nombre válido (solo letras y espacios, mín. 3 caracteres).'); isValid = false; }
+      if (!ciudad.trim())                  { fieldErr('err-cit-ciudad',   'Ingresá tu ciudad.'); isValid = false; }
+      if (!Security.isValidEmail(email))   { fieldErr('err-cit-email',    'Ingresá un correo electrónico válido.'); isValid = false; }
+      if (!consent)                        { fieldErr('err-cit-consent',  'Debés aceptar para que tu firma aparezca públicamente.'); isValid = false; }
+    }
+
+    if (!isValid) return;
+
+    // — Anti-duplicado: email ya registrado en este dispositivo
+    if (await Security.isDuplicate(email)) {
+      showAlert('error', 'Este correo ya fue registrado. ¡Gracias por tu adhesión al manifiesto!');
+      return;
+    }
+
+    // — Sanitizar todos los valores antes de enviar
+    nombre       = Security.sanitize(nombre, 80);
+    ciudad       = Security.sanitize(ciudad, 60);
+    universidad  = Security.sanitize(universidad, 120);
+    organizacion = Security.sanitize(organizacion, 120);
+
+    // — Payload limpio (el email NO se incluye en el registro público)
+    const payload = {
+      nombre, tipo, ciudad,
+      ...(tipo === 'profesional'
+        ? { universidad, anio_egreso: anio }
+        : { organizacion: organizacion || null }),
+    };
+
+    setSubmitLoading(true);
+
+    try {
+      // ─ Cuando Supabase esté conectado, reemplazar el bloque siguiente por:
+      // const res = await fetch(`${SUPABASE_URL}/rest/v1/firmas`, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type':'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
+      //   body: JSON.stringify(payload)
+      // });
+      // if (!res.ok) throw new Error('Error al registrar la firma');
+
+      // Simulación demo (eliminar cuando Supabase esté conectado)
+      await new Promise(r => setTimeout(r, 900));
+
+      // — Marcar como enviado y guardar hash del email
+      Security.markSubmitted();
+      await Security.storeEmailHash(email);
+
+      // — Mostrar éxito y deshabilitar el formulario
+      showAlert('success', '');
+      document.getElementById('btn-submit').style.display = 'none';
+      document.getElementById(tipo === 'profesional' ? 'form-prof' : 'form-cit')
+        .querySelectorAll('input').forEach(i => i.disabled = true);
+
+    } catch (err) {
+      showAlert('error', 'Ocurrió un error al enviar tu firma. Por favor, intentá nuevamente.');
+      console.error('Submit error:', err);
+    } finally {
+      setSubmitLoading(false);
+    }
+  }
+
+  // ── Inicialización ─────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-submit');
+    if (btn) btn.addEventListener('click', handleSubmit);
+
+    // Limpiar error de campo al escribir
+    document.querySelectorAll('#form-prof input, #form-cit input').forEach(input => {
+      input.addEventListener('input', () => {
+        const errId = 'err-' + input.id;
+        if (document.getElementById(errId)) clearFieldErr(errId);
+      });
+    });
+  });
+</script>
+</section><section class="bg-white py-section-gap-desktop px-gutter overflow-hidden" id="firmas-lista">
+<div class="max-w-container-max mx-auto">
+
+  <!-- Encabezado -->
+  <div class="text-center mb-10">
+    <h2 class="font-headline-md text-headline-md text-[#1B4332] mb-4">Quiénes ya firmaron</h2>
+    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1B4332] text-white font-bold text-sm">
+      <span class="w-2 h-2 rounded-full bg-[#B7791F] pulse-dot"></span>
+      <span id="firmas-counter">0 firmas</span>
+    </div>
+  </div>
+
+  <!-- TICKER: 2 filas animadas -->
+  <div class="space-y-3 mb-12">
+    <div class="ticker-track">
+      <div class="ticker-inner ticker-left" id="ticker-row-1"></div>
+    </div>
+    <div class="ticker-track">
+      <div class="ticker-inner ticker-right" id="ticker-row-2"></div>
+    </div>
+  </div>
+
+  <!-- Separador -->
+  <div class="flex items-center gap-4 mb-8" id="firmas-separator">
+    <div class="flex-1 h-px bg-[#E5E7EB]"></div>
+    <span class="text-[11px] font-bold text-[#9CA3AF] uppercase tracking-widest px-2">Lista completa</span>
+    <div class="flex-1 h-px bg-[#E5E7EB]"></div>
+  </div>
+
+  <!-- Estado vacío (visible mientras no haya firmas) -->
+  <div class="text-center py-16 hidden" id="firmas-empty">
+    <span class="material-symbols-outlined text-[48px] text-[#E5E7EB] block mb-4">edit_note</span>
+    <p class="text-[#9CA3AF] text-[15px] font-medium">Aún no hay firmas registradas.</p>
+    <p class="text-[#9CA3AF] text-[13px] mt-1">¡Sé la primera persona en adherirse al manifiesto!</p>
+    <a href="#firma" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#1B4332] text-white rounded-lg font-bold text-sm hover:bg-[#2D6A4F] transition-colors">
+      <span class="material-symbols-outlined text-[16px]">edit</span> Firmar ahora
+    </a>
+  </div>
+
+  <!-- MOSAICO compacto -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3" id="mosaic-grid"></div>
+
+  <!-- Cargar más -->
+  <div class="mt-10 text-center" id="load-more-wrapper">
+    <button id="load-more-btn"
+      class="inline-flex items-center justify-center gap-2 px-7 py-3 border-2 border-[#1B4332] text-[#1B4332] rounded-lg font-bold text-sm hover:bg-[#1B4332] hover:text-white transition-all duration-200">
+      <span class="material-symbols-outlined text-[18px]">expand_more</span>
+      Ver más firmas
+    </button>
+  </div>
+
+</div>
+</section>
+<!-- Footer -->
+<section class="relative w-full h-[600px] overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 z-0">
+<img alt="Vista panorámica costera" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBToPOpYI6zARbF5An1XMp-FsitCWyavfmd7ZSsxzDASPMs5S_8Rf3kh9VfU6L7EPU4MbzOdAwZNRFH2_VqR6ZfP7JT6JUoErFBqKdy2zGF6kfDhhApFb09LcXb3-OH33N79b-BEgmPhORKGDbP1mHrMjVHBSoaoa7kQcHci6C4WVvaIxJWP5WmgfmBtzodpLGUVNz1aWd2T-2XZRoAW8XpRdXUqMc3o14Qh-XdtLL0-YNeT4-pW6pR_Cv963-pXBY-UUbGryA2UbU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[rgba(27,67,50,0.85)] to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-container-max px-gutter mx-auto text-center flex flex-col items-center">
+<blockquote class="font-headline-md text-headline-md text-white max-w-[700px] leading-[1.4] mb-stack-lg">
+      “Invitamos a la comunidad académica, a los jóvenes y a la ciudadanía a votar por Iván Cepeda y Aida Quilcué — el proyecto de la vida.”
+    </blockquote>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-[#B7791F] text-white rounded font-label-sm text-label-sm uppercase tracking-wider hover:bg-opacity-90 transition-colors" href="#firma">
+        Firmar el manifiesto
+      </a>
+<button class="inline-flex items-center justify-center px-8 py-4 border border-white text-white rounded font-label-sm text-label-sm uppercase tracking-wider hover:bg-white/10 transition-colors">
+        Compartir esta página
+      </button>
+</div>
+</div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<footer class="bg-[#1B4332] px-gutter pt-16 pb-8">
+  <div class="max-w-container-max mx-auto">
+
+    <!-- Grid principal: 3 columnas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+
+      <!-- Col 1: Identidad -->
+      <div>
+        <div class="text-white font-bold text-[17px] leading-snug mb-3" style="font-family:'Playfair Display',serif;">
+          Manifiesto por el Agua, la Vida y el Futuro de los Territorios
+        </div>
+        <p class="text-white/60 text-[13px] leading-relaxed mb-5">
+          Iniciativa ciudadana independiente impulsada por egresados de Administración Ambiental de universidades colombianas.
+        </p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#B7791F] pulse-dot"></span>
+          <span class="text-white/70 text-[11px] font-bold uppercase tracking-widest">Colombia · 2026</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navegación -->
+      <div>
+        <div class="text-white/40 text-[11px] font-bold uppercase tracking-widest mb-4">Navegación</div>
+        <nav class="flex flex-col gap-3">
+          <a href="#" class="text-white/75 text-[14px] hover:text-white transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-white/30">article</span> El Manifiesto
+          </a>
+          <a href="#firma" class="text-white/75 text-[14px] hover:text-white transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-white/30">edit</span> Firmar
+          </a>
+          <a href="#firmas-lista" class="text-white/75 text-[14px] hover:text-white transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-white/30">group</span> Quiénes firmaron
+          </a>
+          <div class="w-full h-px bg-white/10 my-1"></div>
+          <a href="#" class="text-white/50 text-[13px] hover:text-white/80 transition-colors">Política de Privacidad</a>
+          <a href="#" class="text-white/50 text-[13px] hover:text-white/80 transition-colors">Términos de uso</a>
+          <a href="#" class="text-white/50 text-[13px] hover:text-white/80 transition-colors">Contacto</a>
+        </nav>
+      </div>
+
+      <!-- Col 3: Descarga + Compartir -->
+      <div>
+        <div class="text-white/40 text-[11px] font-bold uppercase tracking-widest mb-4">Documento oficial</div>
+        <a href="MANIFIESTO_POR_EL_AGUA_LA_VIDA_Y_EL_FUTURO_DE_LOS_TERRITORIOS.pdf" download
+          class="flex items-center gap-3 w-full bg-[#B7791F] hover:bg-[#a06818] text-white px-5 py-4 rounded-xl transition-colors mb-6 group">
+          <div class="w-10 h-10 rounded-lg bg-white/15 flex items-center justify-center shrink-0 group-hover:bg-white/25 transition-colors">
+            <span class="material-symbols-outlined text-[22px]">picture_as_pdf</span>
+          </div>
+          <div class="text-left">
+            <div class="text-[13px] font-bold leading-tight">Descargar Manifiesto</div>
+            <div class="text-[11px] text-white/70 mt-0.5">Documento PDF completo</div>
+          </div>
+          <span class="material-symbols-outlined text-[18px] text-white/50 ml-auto group-hover:text-white transition-colors">download</span>
+        </a>
+
+        <div class="text-white/40 text-[11px] font-bold uppercase tracking-widest mb-3">Compartir</div>
+        <div class="flex items-center gap-2">
+          <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/15 text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Compartir">
+            <span class="material-symbols-outlined text-[18px]">share</span>
+          </button>
+          <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/15 text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="WhatsApp">
+            <span class="material-symbols-outlined text-[18px]">chat</span>
+          </button>
+          <div class="relative group">
+            <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/15 text-white/70 hover:bg-white/10 hover:text-white transition-colors" title="Copiar enlace">
+              <span class="material-symbols-outlined text-[18px]">link</span>
+            </button>
+            <span class="absolute -top-9 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              Copiar enlace
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divisor -->
+    <div class="w-full h-px bg-white/10 mb-6"></div>
+
+    <!-- Barra inferior -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+      <p class="text-white/40 text-[12px] max-w-xl leading-relaxed">
+        Esta página no representa una campaña política oficial. Es una iniciativa ciudadana independiente de profesionales de las ciencias ambientales.
+      </p>
+      <p class="text-white/30 text-[12px] shrink-0">
+        © 2026 Manifiesto por el Agua
+      </p>
+    </div>
+
+  </div>
+</footer>
+<script>
+  // ── Firmas (se cargan desde Supabase al conectar) ───────────────────────────
+  // Cuando Supabase esté configurado, reemplazar la inicialización en DOMContentLoaded por:
+  // fetchSignatures().then(data => initSignaturesDisplay(data));
+
+  // ── Utilidades ──────────────────────────────────────────────────────────────
+  function getInitials(name) {
+    return name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  }
+
+  // ── Ticker ──────────────────────────────────────────────────────────────────
+  function buildTickerChip(sig) {
+    const isCiu = sig.tipo === 'ciudadano';
+    const afiliacion = isCiu
+      ? (sig.organizacion || sig.ciudad)
+      : (sig.universidad  || sig.ciudad);
+    return `<div class="ticker-chip${isCiu ? ' ciudadano' : ''}">
+      <div class="ticker-avatar">${getInitials(sig.nombre)}</div>
+      <span style="font-size:13px;font-weight:600;color:#1D1C17;">${sig.nombre}</span>
+      <span style="font-size:11px;color:#9CA3AF;">${afiliacion}</span>
+    </div>`;
+  }
+
+  function renderTicker(signatures) {
+    const mid = Math.ceil(signatures.length / 2);
+    const row1 = signatures.slice(0, mid);
+    const row2 = signatures.slice(mid);
+    const el1 = document.getElementById('ticker-row-1');
+    const el2 = document.getElementById('ticker-row-2');
+    // Duplicar para bucle sin cortes
+    if (el1) el1.innerHTML = [...row1, ...row1].map(buildTickerChip).join('');
+    if (el2) el2.innerHTML = [...row2, ...row2].map(buildTickerChip).join('');
+  }
+
+  // ── Mosaico ─────────────────────────────────────────────────────────────────
+  const PAGE_SIZE = 24;
+  let allSignatures = [];
+  let mosaicPage = 0;
+
+  function buildMosaicChip(sig, delay) {
+    const isCiu = sig.tipo === 'ciudadano';
+    const afiliacion = isCiu ? sig.organizacion : sig.universidad;
+    const afiliacionColor = isCiu ? '#0F766E' : '#2D6A4F';
+    const afiliacionHtml = afiliacion
+      ? `<div style="font-size:11px;font-weight:600;color:${afiliacionColor};line-height:1.35;">${afiliacion}</div>`
+      : '';
+    return `<div class="mosaic-chip mosaic-chip-enter${isCiu ? ' ciudadano' : ''}" style="animation-delay:${delay}ms">
+      <div class="mosaic-avatar">${getInitials(sig.nombre)}</div>
+      <div style="min-width:0;">
+        <div style="font-size:13px;font-weight:600;color:#1D1C17;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sig.nombre}</div>
+        ${afiliacionHtml}
+        <div style="font-size:11px;color:#9CA3AF;">${sig.ciudad}</div>
+      </div>
+    </div>`;
+  }
+
+  function renderMosaicPage() {
+    const start = mosaicPage * PAGE_SIZE;
+    const chunk = allSignatures.slice(start, start + PAGE_SIZE);
+    const grid  = document.getElementById('mosaic-grid');
+    const btn   = document.getElementById('load-more-wrapper');
+    if (!grid) return;
+    chunk.forEach((sig, i) => {
+      grid.insertAdjacentHTML('beforeend', buildMosaicChip(sig, i * 25));
+    });
+    mosaicPage++;
+    if (mosaicPage * PAGE_SIZE >= allSignatures.length && btn) btn.style.display = 'none';
+  }
+
+  // ── Contador ─────────────────────────────────────────────────────────────────
+  function updateCounter(n) {
+    // Badge en la sección "Quiénes firmaron"
+    const badge = document.getElementById('firmas-counter');
+    if (badge) badge.textContent = n === 0 ? '¡Sé el primero!' : n.toLocaleString('es-CO') + (n === 1 ? ' firma' : ' firmas');
+
+    // Contador en el hero
+    const hero = document.getElementById('hero-counter');
+    if (hero) hero.textContent = n === 0 ? 'Sé el primero en firmar →' : n.toLocaleString('es-CO') + ' personas ya firmaron';
+
+    // Contador junto al formulario
+    const form = document.getElementById('form-counter');
+    if (form) form.textContent = n === 0 ? 'Sé quien inicia este movimiento' : n.toLocaleString('es-CO') + ' personas ya firmaron';
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────────────────
+  function initSignaturesDisplay(signatures) {
+    allSignatures = signatures;
+    updateCounter(signatures.length);
+
+    const tickerSection = document.querySelector('.ticker-track')?.closest('.space-y-3');
+    const emptyState    = document.getElementById('firmas-empty');
+    const mosaicGrid    = document.getElementById('mosaic-grid');
+    const loadMoreWrap  = document.getElementById('load-more-wrapper');
+    const separator     = document.getElementById('firmas-separator');
+
+    if (signatures.length === 0) {
+      // Ocultar ticker y separador, mostrar estado vacío
+      if (tickerSection) tickerSection.style.display = 'none';
+      if (separator)     separator.style.display = 'none';
+      if (loadMoreWrap)  loadMoreWrap.style.display = 'none';
+      if (emptyState)    emptyState.classList.remove('hidden');
+    } else {
+      if (tickerSection) tickerSection.style.display = '';
+      if (separator)     separator.style.display = '';
+      if (emptyState)    emptyState.classList.add('hidden');
+      renderTicker(signatures.slice(0, 48));
+      renderMosaicPage();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('load-more-btn');
+    if (btn) btn.addEventListener('click', renderMosaicPage);
+
+    // Inicializar vacío hasta que Supabase esté conectado.
+    // Cuando esté listo, reemplazar por:
+    // fetchSignatures().then(data => initSignaturesDisplay(data));
+    initSignaturesDisplay([]);
+  });
+</script>
+</body></html>
