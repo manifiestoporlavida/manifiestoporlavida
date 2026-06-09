@@ -3,6 +3,9 @@
 <html class="scroll-smooth" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://lh3.googleusercontent.com https://aida-public.storage.googleapis.com; connect-src https://yypfeefdrknrpczjofpi.supabase.co; frame-ancestors 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Adhesiones | Manifiesto Me La Juego Por La Vida</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
@@ -1061,26 +1064,54 @@ Descargar Manifiesto PDF
     return name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   }
 
+  // Escapa caracteres HTML para prevenir XSS en renderizado de datos de Supabase
+  function esc(str) {
+    if (typeof str !== 'string') return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   // ── Ticker ──────────────────────────────────────────────────────────────────
   function buildTickerChip(sig) {
     const isCiu = sig.tipo === 'ciudadano';
-    const afiliacion = isCiu
+    const afiliacion = esc(isCiu
       ? (sig.organizacion || sig.ciudad)
-      : (sig.universidad  || sig.ciudad);
+      : (sig.universidad  || sig.ciudad));
     return `<div class="ticker-chip${isCiu ? ' ciudadano' : ''}">
-      <div class="ticker-avatar">${getInitials(sig.nombre)}</div>
-      <span style="font-size:13px;font-weight:600;color:#1D1C17;">${sig.nombre}</span>
+      <div class="ticker-avatar">${esc(getInitials(sig.nombre))}</div>
+      <span style="font-size:13px;font-weight:600;color:#1D1C17;">${esc(sig.nombre)}</span>
       <span style="font-size:11px;color:#9CA3AF;">${afiliacion}</span>
     </div>`;
   }
 
+  // Rellena un array hasta un mínimo para que el ticker no muestre repeticiones obvias
+  function padToMin(arr, min) {
+    if (arr.length === 0) return arr;
+    const out = [...arr];
+    while (out.length < min) out.push(...arr);
+    return out;
+  }
+
+  const TICKER_MIN_VISIBLE = 6;   // mínimo de firmas para mostrar el ticker
+  const TICKER_MIN_ROW     = 10;  // mínimo de chips por fila para loop suave
+
   function renderTicker(signatures) {
-    const mid = Math.ceil(signatures.length / 2);
-    const row1 = signatures.slice(0, mid);
-    const row2 = signatures.slice(mid);
-    const el1 = document.getElementById('ticker-row-1');
-    const el2 = document.getElementById('ticker-row-2');
-    // Duplicar para bucle sin cortes
+    const tickerSection = document.querySelector('.space-y-3.mb-12');
+    if (signatures.length < TICKER_MIN_VISIBLE) {
+      if (tickerSection) tickerSection.style.display = 'none';
+      return;
+    }
+    if (tickerSection) tickerSection.style.display = '';
+    const mid  = Math.ceil(signatures.length / 2);
+    const row1 = padToMin(signatures.slice(0, mid), TICKER_MIN_ROW);
+    const row2 = padToMin(signatures.slice(mid),    TICKER_MIN_ROW);
+    const el1  = document.getElementById('ticker-row-1');
+    const el2  = document.getElementById('ticker-row-2');
+    // Duplicar para bucle continuo sin corte visible
     if (el1) el1.innerHTML = [...row1, ...row1].map(buildTickerChip).join('');
     if (el2) el2.innerHTML = [...row2, ...row2].map(buildTickerChip).join('');
   }
@@ -1095,14 +1126,14 @@ Descargar Manifiesto PDF
     const afiliacion = isCiu ? sig.organizacion : sig.universidad;
     const afiliacionColor = isCiu ? '#0F766E' : '#2D6A4F';
     const afiliacionHtml = afiliacion
-      ? `<div style="font-size:11px;font-weight:600;color:${afiliacionColor};line-height:1.35;">${afiliacion}</div>`
+      ? `<div style="font-size:11px;font-weight:600;color:${afiliacionColor};line-height:1.35;">${esc(afiliacion)}</div>`
       : '';
     return `<div class="mosaic-chip mosaic-chip-enter${isCiu ? ' ciudadano' : ''}" style="animation-delay:${delay}ms">
-      <div class="mosaic-avatar">${getInitials(sig.nombre)}</div>
+      <div class="mosaic-avatar">${esc(getInitials(sig.nombre))}</div>
       <div style="min-width:0;">
-        <div style="font-size:13px;font-weight:600;color:#1D1C17;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sig.nombre}</div>
+        <div style="font-size:13px;font-weight:600;color:#1D1C17;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(sig.nombre)}</div>
         ${afiliacionHtml}
-        <div style="font-size:11px;color:#9CA3AF;">${sig.ciudad}</div>
+        <div style="font-size:11px;color:#9CA3AF;">${esc(sig.ciudad)}</div>
       </div>
     </div>`;
   }
