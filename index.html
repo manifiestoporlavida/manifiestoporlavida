@@ -817,20 +817,21 @@ Descargar Manifiesto PDF
     setSubmitLoading(true);
 
     try {
-      // ─ Cuando Supabase esté conectado, reemplazar el bloque siguiente por:
-      // const res = await fetch(`${SUPABASE_URL}/rest/v1/firmas`, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type':'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
-      //   body: JSON.stringify(payload)
-      // });
-      // if (!res.ok) throw new Error('Error al registrar la firma');
+      // ─ Enviar a Supabase
+      await submitSignature(payload);
 
-      // Simulación demo (eliminar cuando Supabase esté conectado)
-      await new Promise(r => setTimeout(r, 900));
-
-      // — Marcar como enviado y guardar hash del email
+      // — Marcar como enviado y guardar hash del email (anti-duplicado)
       Security.markSubmitted();
       await Security.storeEmailHash(email);
+
+      // — Refrescar la lista de firmas inmediatamente
+      fetchSignatures()
+        .then(data => {
+          mosaicPage = 0;
+          document.getElementById('mosaic-grid').innerHTML = '';
+          initSignaturesDisplay(data);
+        })
+        .catch(() => {});
 
       // — Mostrar éxito y deshabilitar el formulario
       showAlert('success', '');
@@ -839,7 +840,7 @@ Descargar Manifiesto PDF
         .querySelectorAll('input').forEach(i => i.disabled = true);
 
     } catch (err) {
-      showAlert('error', 'Ocurrió un error al enviar tu firma. Por favor, intentá nuevamente.');
+      showAlert('error', 'Ocurrió un error al enviar tu firma. Por favor, intentá nuevamente en unos segundos.');
       console.error('Submit error:', err);
     } finally {
       setSubmitLoading(false);
@@ -1027,9 +1028,33 @@ Descargar Manifiesto PDF
   </div>
 </footer>
 <script>
-  // ── Firmas (se cargan desde Supabase al conectar) ───────────────────────────
-  // Cuando Supabase esté configurado, reemplazar la inicialización en DOMContentLoaded por:
-  // fetchSignatures().then(data => initSignaturesDisplay(data));
+  // ── Configuración Supabase ───────────────────────────────────────────────────
+  const SUPABASE_URL      = 'https://yypfeefdrknrpczjofpi.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5cGZlZWZkcmtucnBjempvZnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMDQwMDUsImV4cCI6MjA5NjU4MDAwNX0.UWI2qeHaVPOEzPyCQqN5uvPTaHOtU9LKt-ZeLNiM2IQ';
+  const SB_HEADERS        = { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY };
+
+  // ── Leer firmas desde Supabase ───────────────────────────────────────────────
+  async function fetchSignatures() {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/firmas?select=nombre,tipo,ciudad,universidad,organizacion,created_at&order=created_at.desc`,
+      { headers: SB_HEADERS }
+    );
+    if (!res.ok) throw new Error('Error al cargar firmas: ' + res.status);
+    return res.json();
+  }
+
+  // ── Enviar firma a Supabase ──────────────────────────────────────────────────
+  async function submitSignature(payload) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/firmas`, {
+      method:  'POST',
+      headers: { ...SB_HEADERS, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body:    JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const msg = await res.text();
+      throw new Error(msg || 'Error al registrar la firma');
+    }
+  }
 
   // ── Utilidades ──────────────────────────────────────────────────────────────
   function getInitials(name) {
@@ -1140,10 +1165,24 @@ Descargar Manifiesto PDF
     const btn = document.getElementById('load-more-btn');
     if (btn) btn.addEventListener('click', renderMosaicPage);
 
-    // Inicializar vacío hasta que Supabase esté conectado.
-    // Cuando esté listo, reemplazar por:
-    // fetchSignatures().then(data => initSignaturesDisplay(data));
-    initSignaturesDisplay([]);
+    // ─ Carga inicial desde Supabase
+    fetchSignatures()
+      .then(data => initSignaturesDisplay(data))
+      .catch(() => initSignaturesDisplay([]));  // Si falla, arranca vacío
+
+    // ─ Polling: actualiza la lista cada 30 segundos
+    setInterval(() => {
+      fetchSignatures()
+        .then(data => {
+          if (data.length !== allSignatures.length) {
+            // Hubo nuevas firmas: re-renderizar desde el inicio
+            mosaicPage = 0;
+            document.getElementById('mosaic-grid').innerHTML = '';
+            initSignaturesDisplay(data);
+          }
+        })
+        .catch(() => {});  // Error silencioso en polling
+    }, 30000);
   });
 </script>
 </body></html>
